@@ -1,0 +1,339 @@
+/* ECG Signal Anomaly Detection - Main Stylesheet */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: #333;
+	height: 100vh;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
+	margin: 0;
+	max-width: none;
+}
+
+.header {
+	text-align: center;
+	color: white;
+	margin-bottom: 16px;
+}
+
+.header h1 {
+	font-size: 1.8rem;
+	margin-bottom: 3px;
+}
+
+.header p {
+	font-size: 1rem;
+	opacity: 0.9;
+}
+
+.main-content {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 16px;
+	flex: 1;
+	min-height: 0;
+}
+
+.left-panel {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	min-height: 0;
+}
+
+.panel {
+	background: white;
+	border-radius: 8px;
+	padding: 16px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.panel h2 {
+	color: #4a5568;
+	margin-bottom: 16px;
+	font-size: 1.1rem;
+	border-bottom: 2px solid #e2e8f0;
+	padding-bottom: 8px;
+}
+
+.chart-panel {
+	flex: 2;
+	min-height: 0;
+}
+
+.chart-container {
+	position: relative;
+	flex: 1;
+	min-height: 200px;
+	height: 100%;
+}
+
+.signal-info {
+	margin-top: 8px;
+}
+
+.signal-info-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 8px;
+}
+
+.info-item {
+	background: #f7fafc;
+	padding: 8px;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.info-label {
+	font-weight: bold;
+	color: #2d3748;
+	display: block;
+	margin-bottom: 2px;
+	font-size: 0.75rem;
+}
+
+.info-value {
+	color: #4a5568;
+	font-size: 0.8rem;
+}
+
+.right-panel {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	min-height: 0;
+}
+
+.prediction-panel {
+	flex: 1;
+	min-height: 0;
+}
+
+.prediction-container {
+	text-align: center;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.prediction-result {
+	background: #f7fafc;
+	border-radius: 6px;
+	padding: 16px;
+	margin-bottom: 8px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 0;
+}
+
+.prediction-class {
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.normal {
+	color: #38a169;
+}
+
+.abnormal {
+	color: #e53e3e;
+}
+
+.confidence {
+	font-size: 0.9rem;
+	color: #718096;
+	margin-bottom: 8px;
+}
+
+.actual-label {
+	background: #edf2f7;
+	border-radius: 4px;
+	padding: 8px;
+	font-size: 0.8rem;
+}
+
+.filter-controls {
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+	border-bottom: 2px solid #e2e8f0;
+}
+
+.filter-controls h3 {
+	color: #4a5568;
+	margin-bottom: 8px;
+	font-size: 1rem;
+}
+
+.filter-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.filter-button {
+	background: #f7fafc;
+	color: #4a5568;
+	border: 2px solid #e2e8f0;
+	border-radius: 16px;
+	padding: 6px 16px;
+	font-size: 0.8rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	min-width: 80px;
+}
+
+.filter-button:hover {
+	border-color: #667eea;
+	color: #667eea;
+	transform: translateY(-1px);
+}
+
+.filter-button.active {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border-color: #667eea;
+}
+
+.filter-info {
+	font-size: 0.8rem;
+	color: #718096;
+	font-weight: 500;
+}
+
+.navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.nav-button {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border: none;
+	border-radius: 20px;
+	padding: 8px 16px;
+	font-size: 0.8rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	min-width: 80px;
+}
+
+.nav-button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:disabled {
+	background: #cbd5e0;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+}
+
+.row-info {
+	font-size: 0.9rem;
+	color: #4a5568;
+	font-weight: 600;
+	min-width: 120px;
+}
+
+.info-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+}
+
+.dataset-info {
+	background: #f7fafc;
+	padding: 8px;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.controls-panel {
+	flex: 0 0 auto;
+}
+
+.loading {
+	text-align: center;
+	padding: 16px;
+	color: #718096;
+	font-size: 0.9rem;
+}
+
+.error {
+	background: #fed7d7;
+	color: #c53030;
+	padding: 8px;
+	border-radius: 4px;
+	margin: 8px 0;
+	font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+	.main-content {
+		grid-template-columns: 1fr;
+		grid-template-rows: 2fr 1fr;
+	}
+
+	.chart-container {
+		min-height: 200px;
+	}
+
+	.signal-info-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.info-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 16px;
+	}
+
+	.header h1 {
+		font-size: 1.5rem;
+	}
+
+	.filter-buttons {
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.navigation {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.chart-container {
+		min-height: 150px;
+	}
+}

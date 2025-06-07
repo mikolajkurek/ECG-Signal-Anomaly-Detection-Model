@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Signal Anomaly Detection</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ECG Signal Anomaly Detection</h1>
+            <p>Interactive visualization of ECG signals with real-time anomaly detection</p>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="panel chart-panel">
+                    <h2>📈 ECG Signal</h2>
+                    <div class="chart-container">
+                        <canvas id="ecgChart"></canvas>
+                    </div>
+                    <div class="signal-info">
+                        <div id="signalInfo" class="signal-info-grid">
+                            <!-- Signal information will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel controls-panel">
+                    <div class="filter-controls">
+                        <h3>🔍 Filter by Type</h3>
+                        <div class="filter-buttons">
+                            <button id="filterAll" class="filter-button active">All Signals</button>
+                            <button id="filterNormal" class="filter-button">Normal Only</button>
+                            <button id="filterAbnormal" class="filter-button">Abnormal Only</button>
+                        </div>
+                        <div class="filter-info">
+                            Showing <span id="filteredCount">-</span> of <span id="totalCount">-</span> samples
+                        </div>
+                    </div>
+                    
+                    <div class="navigation">
+                        <button id="prevBtn" class="nav-button">⬅️ Previous</button>
+                        <div class="row-info">
+                            Sample <span id="currentRow">1</span> of <span id="totalRows">-</span>
+                        </div>
+                        <button id="nextBtn" class="nav-button">Next ➡️</button>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="dataset-info">
+                            <span class="info-label">Dataset</span>
+                            <span class="info-value">100 Balanced</span>
+                        </div>
+                        <div class="dataset-info">
+                            <span class="info-label">Rate</span>
+                            <span class="info-value">125 Hz</span>
+                        </div>
+                        <div class="dataset-info">
+                            <span class="info-label">Features</span>
+                            <span class="info-value">187</span>
+                        </div>
+                        <div class="dataset-info">
+                            <span class="info-label">Classes</span>
+                            <span class="info-value">5 Types</span>
+                        </div>
+                        <div class="dataset-info">
+                            <span class="info-label">Distribution</span>
+                            <span class="info-value">20 each</span>
+                        </div>
+                        <div class="dataset-info">
+                            <span class="info-label">Shortcuts</span>
+                            <span class="info-value">1/2/3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="panel prediction-panel">
+                    <h2>🤖 Model Prediction</h2>
+                    <div class="prediction-container">
+                        <div id="predictionResult" class="prediction-result">
+                            <div class="loading">Select a signal to see prediction...</div>
+                        </div>
+                        <div id="actualLabel" class="actual-label" style="display: none;">
+                            <!-- Actual label will be shown here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
